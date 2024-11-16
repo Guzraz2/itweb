@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .logo p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        /* Hero Section */
+        header.hero {
+            background: linear-gradient(135deg, rgba(0, 128, 255, 0.8), rgba(34, 193, 195, 0.8)), url('https://source.unsplash.com/1600x900/?technology');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-top: 60px; /* To prevent navbar overlap */
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header.hero h1 {
+            font-size: 60px;
+            margin: 0;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            letter-spacing: 4px;
+        }
+
+        header.hero p {
+            font-size: 28px;
+            margin: 20px 0;
+            font-weight: 400;
+            color: #fff;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        header.hero .btn {
+            background: linear-gradient(45deg, #4CAF50, #8bc34a);
+            color: white;
+            padding: 18px 50px;
+            font-size: 20px;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        header.hero .btn:hover {
+            background: linear-gradient(45deg, #388e3c, #66bb6a);
+            transform: scale(1.05);
+        }
+
+        header.hero .btn:focus {
+            outline: none;
+        }
+
+        /* Products Section */
+        section#products {
+            text-align: center;
+            margin: 50px 0;
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        section#products h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .product-cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            width: 280px;
+            text-align: center;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f8f8f8;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card i {
+            font-size: 50px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .product-card a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .product-card a:hover {
+            color: #388e3c;
+        }
+
+        /* Customer Reviews Section */
+        section#reviews {
+            background-color: #f9f9f9;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        section#reviews h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .review-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .review-card {
+            width: 320px;
+            padding: 25px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-card p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .review-card h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .review-card p:last-child {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        footer .social-icons {
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 15px;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #4CAF50;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 60px;
+            }
+
+            .product-cards {
+                flex-direction: column;
+            }
+
+            .review-cards {
+                flex-direction: column;
+            }
+
+            header.hero h1 {
+                font-size: 48px;
+            }
+
+            header.hero p {
+                font-size: 22px;
+            }
+
+            .product-card, .review-card {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <p>YourLogo</p>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="domain.html">Domain</a></li>
+            <li><a href="rdp.html">RDP</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Your Website</h1>
+            <p>We offer Hosting, Domain, and RDP solutions to meet all your needs.</p>
+            <a href="#products" class="btn">Explore Products</a>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product-cards">
+            <div class="product-card">
+                <i class="fas fa-server"></i>
+                <h3>Hosting</h3>
+                <p>Reliable web hosting for all your needs</p>
+                <a href="hosting.html" target="_blank">Learn More</a>
+            </div>
+            <div class="product-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Domain</h3>
+                <p>Get your desired domain with ease</p>
+                <a href="domain.html" target="_blank">Learn More</a>
+            </div>
+            <div class="product-card">
+                <i class="fas fa-laptop"></i>
+                <h3>RDP</h3>
+                <p>Access remote desktop solutions</p>
+                <a href="rdp.html" target="_blank">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews">
+        <h2>What Our Customers Say</h2>
+        <div class="review-cards">
+            <div class="review-card">
+                <p>"Great service and support! Highly recommended!"</p>
+                <h3>John Doe</h3>
+                <p>Customer</p>
+            </div>
+            <div class="review-card">
+                <p>"Our website runs smoothly thanks to their hosting solutions."</p>
+                <h3>Jane Smith</h3>
+                <p>Business Owner</p>
+            </div>
+            <div class="review-card">
+                <p>"I have been using their services for years, and I am always satisfied!"</p>
+                <h3>Emily Williams</h3>
+                <p>Freelancer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

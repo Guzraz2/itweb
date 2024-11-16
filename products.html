@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        nav .logo p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #fff;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .section-heading {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            color: #333;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 0.5s;
+        }
+
+        .product-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);  /* 3 products in a row */
+            gap: 30px;  /* Gap between the products */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: #fff;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .product-card button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .product-card button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Editable Price Tag */
+        .price-tag {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            display: inline-block;
+            padding: 5px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .price-tag input {
+            border: none;
+            background-color: transparent;
+            font-size: 20px;
+            font-weight: bold;
+            width: 100px;
+            text-align: center;
+            color: #333;
+        }
+
+        .price-tag input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer .social-icons {
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            margin: 0 15px;
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #007bff;
+        }
+
+        /* Load More Button */
+        .load-more {
+            margin: 40px auto;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .load-more:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 32px;
+            }
+
+            .product-cards {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Auto-fit for smaller screens */
+            }
+
+            .product-card {
+                padding: 20px;
+            }
+
+            .product-card img {
+                height: 180px;
+            }
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo"><p>Your Brand</p></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Products Section -->
+    <section class="products">
+        <h2 class="section-heading">Our Products</h2>
+        <div class="product-cards" id="product-cards">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>Description of Product 1.</p>
+                <button onclick="window.open('https://discord.com', '_blank')">Buy Now</button>
+                <div class="price-tag">
+                    <input type="text" value="$10.99" />
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>Description of Product 2.</p>
+                <button onclick="window.open('https://discord.com', '_blank')">Buy Now</button>
+                <div class="price-tag">
+                    <input type="text" value="$12.99" />
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>Description of Product 3.</p>
+                <button onclick="window.open('https://discord.com', '_blank')">Buy Now</button>
+                <div class="price-tag">
+                    <input type="text" value="$8.99" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <button class="load-more" onclick="loadMoreProducts()">Load More Products</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Brand. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://discord.com" target="_blank"><i class="material-icons">discord</i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="material-icons">instagram</i></a>
+            <a href="https://www.facebook.com" target="_blank"><i class="material-icons">facebook</i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="material-icons">twitter</i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Function to load more products
+        function loadMoreProducts() {
+            const newProducts = `
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 4">
+                <h3>Product 4</h3>
+                <p>Description of Product 4.</p>
+                <button onclick="window.open('https://discord.com', '_blank')">Buy Now</button>
+                <div class="price-tag">
+                    <input type="text" value="$15.99" />
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/200" alt="Product 5">
+                <h3>Product 5</h3>
+                <p>Description of Product 5.</p>
+                <button onclick="window.open('https://discord.com', '_blank')">Buy Now</button>
+                <div class="price-tag">
+                    <input type="text" value="$9.99" />
+                </div>
+            </div>
+            `;
+            document.getElementById('product-cards').innerHTML += newProducts;
+        }
+    </script>
+
+</body>
+</html>

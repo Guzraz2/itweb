@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navbar Styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .logo p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .contact h2 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);  /* 2 cards per row */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Contact Card Styles */
+        .contact-card {
+            background-color: #fff;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card i {
+            font-size: 50px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .contact-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+            border: 2px solid #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer .social-icons {
+            margin-top: 10px;
+        }
+
+        footer .social-icons a {
+            margin: 0 15px;
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #007bff;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .contact-cards {
+                grid-template-columns: 1fr;  /* 1 card per row */
+            }
+
+            .contact h2 {
+                font-size: 32px;
+            }
+
+            .contact-card {
+                padding: 20px;
+            }
+
+            .contact-card i {
+                font-size: 40px;
+            }
+
+            .contact-card h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo"><p>Your Brand</p></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contact Us Section -->
+    <section class="contact">
+        <h2>Contact Us</h2>
+
+        <div class="contact-cards">
+            <!-- Discord Card -->
+            <div class="contact-card">
+                <i class="material-icons">discord</i>
+                <h3>Discord</h3>
+                <p>Join our Discord server for live support and updates.</p>
+                <a href="https://discord.com" target="_blank">Join Now</a>
+            </div>
+
+            <!-- Instagram Card -->
+            <div class="contact-card">
+                <i class="material-icons">instagram</i>
+                <h3>Instagram</h3>
+                <p>Follow us on Instagram for exciting offers!</p>
+                <a href="https://www.instagram.com" target="_blank">Follow Us</a>
+            </div>
+
+            <!-- Facebook Card -->
+            <div class="contact-card">
+                <i class="material-icons">facebook</i>
+                <h3>Facebook</h3>
+                <p>Connect with us on Facebook for the latest updates.</p>
+                <a href="https://www.facebook.com" target="_blank">Like Us</a>
+            </div>
+
+            <!-- Twitter Card -->
+            <div class="contact-card">
+                <i class="material-icons">twitter</i>
+                <h3>Twitter</h3>
+                <p>Stay updated with our latest news on Twitter.</p>
+                <a href="https://www.twitter.com" target="_blank">Follow Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Brand. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://discord.com" target="_blank"><i class="material-icons">discord</i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="material-icons">instagram</i></a>
+            <a href="https://www.facebook.com" target="_blank"><i class="material-icons">facebook</i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="material-icons">twitter</i></a>
+        </div>
+    </footer>
+
+</body>
+</html>
