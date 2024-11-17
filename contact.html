@@ -3,63 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Contact Us - Guzraz Services</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <!-- AOS (Animate on Scroll) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            margin-top: 0;
+            opacity: 0; /* Initially hidden for fade-in */
+            animation: fadeInPage 2s forwards;
         }
 
-        /* Navbar Styles */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            position: sticky;
+        /* Page Load Fade-In Effect */
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            position: fixed;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #004d92, #62b2f1); /* Gradient background */
+            padding: 18px 20px;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
         }
 
-        nav .logo p {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 20px;
-        }
-
-        nav ul li a {
+        .navbar-brand {
+            font-size: 28px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
             color: #fff;
-            text-decoration: none;
-            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
-        nav ul li a:hover {
-            color: #007bff;
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            padding: 10px 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        /* Contact Section */
+        .navbar-nav .nav-link:hover {
+            color: #4CAF50; /* Light green on hover */
+            transform: scale(1.1);
+            text-decoration: underline;
+        }
+
+        .navbar-toggler {
+            border-color: #fff;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #fff;
+        }
+
+        /* Contact Us Section */
         .contact {
-            padding: 60px 20px;
+            padding: 120px 20px 80px; /* Adjusted top padding to account for navbar */
             text-align: center;
             background-color: #fff;
         }
@@ -79,7 +97,6 @@
             margin: 0 auto;
         }
 
-        /* Contact Card Styles */
         .contact-card {
             background-color: #fff;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
@@ -88,6 +105,20 @@
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            opacity: 0; /* Initially hidden for fade-in */
+            animation: fadeInCard 1s forwards;
+        }
+
+        /* Animation for contact card fade-in */
+        @keyframes fadeInCard {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .contact-card:hover {
@@ -115,7 +146,7 @@
         .contact-card a {
             display: inline-block;
             font-size: 16px;
-            color: #007bff;
+            color: #000; /* Font color changed to black */
             text-decoration: none;
             border: 2px solid #007bff;
             padding: 10px 20px;
@@ -134,6 +165,7 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+            margin-top: 50px; /* Added margin-top to remove gap */
         }
 
         footer .social-icons {
@@ -162,10 +194,6 @@
                 font-size: 32px;
             }
 
-            .contact-card {
-                padding: 20px;
-            }
-
             .contact-card i {
                 font-size: 40px;
             }
@@ -173,71 +201,108 @@
             .contact-card h3 {
                 font-size: 20px;
             }
+
+            .contact-card p {
+                font-size: 14px;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 18px;
+            }
+        }
+
+        /* Extra small devices (phones, 480px and below) */
+        @media (max-width: 480px) {
+            .contact h2 {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .contact-card i {
+                font-size: 35px;
+            }
+
+            .contact-card a {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
-
     <!-- Navbar -->
-    <nav>
-        <div class="logo"><p>Your Brand</p></div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Guzraz Services</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <!-- Contact Us Section -->
-    <section class="contact">
+    <section class="contact" data-aos="fade-up">
         <h2>Contact Us</h2>
-
         <div class="contact-cards">
-            <!-- Discord Card -->
-            <div class="contact-card">
-                <i class="material-icons">discord</i>
+            <div class="contact-card" data-aos="fade-right">
+                <i class="fab fa-discord"></i> <!-- Discord Icon -->
                 <h3>Discord</h3>
-                <p>Join our Discord server for live support and updates.</p>
-                <a href="https://discord.gg/guzrazservoces" target="_blank">Join Now</a>
+                <p>Join our Discord server for real-time support and community discussions.</p>
+                <a href="https://discord.com" target="_blank">Join Now</a>
             </div>
-
-            <!-- Instagram Card -->
-            <div class="contact-card">
-                <i class="material-icons">instagram</i>
-                <h3>Instagram</h3>
-                <p>Follow us on Instagram for exciting offers and order service!</p>
-                <a href="https://www.instagram.com/guzrazservices" target="_blank">Follow Us</a>
-            </div>
-
-            <!-- Facebook Card -->
-            <div class="contact-card">
-                <i class="material-icons">facebook</i>
+            <div class="contact-card" data-aos="fade-left">
+                <i class="fab fa-facebook-f"></i> <!-- Facebook Icon -->
                 <h3>Facebook</h3>
-                <p>Connect with us on Facebook for the latest updates.</p>
-                <a href="https://www.facebook.com/unavailable" target="_blank">Like Us</a>
+                <p>Connect with us on Facebook for updates, promotions, and support.</p>
+                <a href="https://facebook.com" target="_blank">Follow Us</a>
             </div>
-
-            <!-- Twitter Card -->
-            <div class="contact-card">
-                <i class="material-icons">twitter</i>
+            <div class="contact-card" data-aos="fade-right">
+                <i class="fab fa-instagram"></i> <!-- Instagram Icon -->
+                <h3>Instagram</h3>
+                <p>Stay connected on Instagram for our latest updates and offers.</p>
+                <a href="https://instagram.com" target="_blank">Follow Us</a>
+            </div>
+            <div class="contact-card" data-aos="fade-left">
+                <i class="fab fa-twitter"></i> <!-- Twitter Icon -->
                 <h3>Twitter</h3>
-                <p>Stay updated with our latest news on Twitter.</p>
-                <a href="https://www.twitter.com/GuzrazServices" target="_blank">Follow Us</a>
+                <p>Follow us on Twitter for news, updates, and exclusive offers.</p>
+                <a href="https://twitter.com" target="_blank">Follow Us</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Your Brand. All rights reserved.</p>
+        <p>&copy; 2024 Guzraz Services. All rights reserved.</p>
         <div class="social-icons">
-            <a href="https://discord.com/guzrazservices" target="_blank"><i class="material-icons">discord</i></a>
-            <a href="https://www.instagram.com/guzrazservices" target="_blank"><i class="material-icons">instagram</i></a>
-            <a href="https://www.facebook.com" target="_blank"><i class="material-icons">facebook</i></a>
-            <a href="https://www.twitter.com/GuzrazServices" target="_blank"><i class="material-icons">twitter</i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS for scroll animations -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, // Animation duration in ms
+            easing: 'ease-in-out', // Animation easing
+            once: true, // Animation happens only once
+        });
+    </script>
 </body>
 </html>
