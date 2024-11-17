@@ -3,206 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>About Us - Guzraz Services</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <!-- AOS (Animate On Scroll) CSS for scroll animations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            margin-top: 0;
+            overflow-x: hidden;
+            opacity: 0;
+            animation: fadeInPage 1s forwards;
         }
 
-        /* Navbar Styles */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            position: sticky;
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            position: fixed;
             top: 0;
-            z-index: 10;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #004d92, #62b2f1);
+            padding: 18px 20px;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
-        nav .logo p {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 20px;
-        }
-
-        nav ul li a {
+        .navbar-brand {
+            font-size: 28px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
             color: #fff;
-            text-decoration: none;
-            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
-        nav ul li a:hover {
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            padding: 10px 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #4CAF50; /* Light green on hover */
+            transform: scale(1.1);
             text-decoration: underline;
         }
 
         /* About Us Section */
-        .about {
-            padding: 60px 20px;
-            text-align: center;
+        .about-section {
+            padding: 100px 20px 40px;
             background-color: #fff;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
         }
 
-        .about h2 {
-            font-size: 40px;
-            font-weight: 600;
-            margin-bottom: 30px;
-            color: #333;
-            letter-spacing: 1px;
+        .about-section h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: #444;
+            font-weight: bold;
         }
 
-        .about-content p {
-            font-size: 18px;
-            line-height: 1.8;
+        .about-section p {
+            font-size: 20px;
             color: #666;
-            max-width: 800px;
-            margin: 0 auto;
-            margin-bottom: 20px;
+            line-height: 1.8;
+            margin-bottom: 40px;
         }
 
         /* Fast Support Section */
-        .fast-support {
-            background-color: #007bff;
-            color: #fff;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .fast-support h3 {
-            font-size: 32px;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .fast-support p {
-            font-size: 18px;
-            color: #fff;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Customer Reviews Section */
-        .reviews {
-            padding: 50px 20px;
-            text-align: center;
+        .support-section {
+            padding: 80px 20px;
             background-color: #f9f9f9;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s 0.5s forwards;
         }
 
-        .reviews h3 {
-            font-size: 36px;
-            margin-bottom: 30px;
-            color: #333;
+        .support-section h3 {
+            font-size: 40px;
+            margin-bottom: 40px;
+            color: #444;
+            font-weight: bold;
         }
 
-        .reviews-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .support-section p {
+            font-size: 20px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .support-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .support-section ul li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 80px 20px;
+            background-color: #fff;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s 1s forwards;
+        }
+
+        .reviews-section h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: #444;
+            font-weight: bold;
         }
 
         .review-card {
             background-color: #fff;
             border-radius: 10px;
             padding: 25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-size: 16px;
-            color: #555;
-            text-align: center;
-            position: relative;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
         .review-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .review-card p {
-            font-style: italic;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin-bottom: 20px;
         }
 
-        .review-card::before {
-            content: "“";
-            font-size: 50px;
-            color: #007bff;
-            position: absolute;
-            top: 10px;
-            left: 10px;
+        .review-card h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
-        .review-card::after {
-            content: "”";
-            font-size: 50px;
-            color: #007bff;
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
-        /* Footer Styles */
         footer {
             background-color: #333;
-            color: #fff;
-            padding: 20px;
+            color: white;
             text-align: center;
-        }
-
-        footer .social-icons {
-            margin-top: 10px;
+            padding: 30px;
         }
 
         footer .social-icons a {
-            margin: 0 10px;
-            color: #fff;
-            font-size: 24px;
-            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            font-size: 30px;
+            transition: color 0.3s ease;
         }
 
         footer .social-icons a:hover {
-            color: #007bff;
+            color: #4CAF50;
         }
-        
-        /* Mobile Responsiveness */
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Cursor */
+        body {
+            cursor: url('https://www.google.com/cse/static/arrow.cur'), auto;
+        }
+
+        /* Parallax effect */
+        .parallax {
+            background-image: url('your-image.jpg');
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Mobile & Tablet Responsiveness */
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
+            .about-section h2 {
+                font-size: 36px;
             }
 
-            .about, .fast-support, .reviews {
-                padding: 40px 20px;
+            .about-section p {
+                font-size: 18px;
             }
 
-            .reviews-cards {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            .navbar-nav .nav-link {
+                font-size: 18px;
             }
 
-            footer .social-icons {
-                display: flex;
-                justify-content: center;
+            .review-card {
+                margin-bottom: 20px;
+            }
+
+            .support-section h3 {
+                font-size: 30px;
+            }
+
+            .support-section ul li {
+                font-size: 16px;
+            }
+
+            /* Stacking review cards on smaller screens */
+            .reviews-section .row {
+                display: block;
+            }
+
+            .review-card {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Mobile-first Footer */
+        @media (max-width: 576px) {
+            footer .social-icons a {
+                font-size: 24px;
+                margin: 0 10px;
             }
         }
     </style>
@@ -210,96 +261,88 @@
 <body>
 
     <!-- Navbar -->
-    <nav>
-        <div class="logo"><p>Guzraz Services</p></div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Guzraz Services</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <!-- About Us Section -->
-    <section class="about">
+    <section class="about-section" data-aos="fade-up">
         <h2>About Us</h2>
-        <div class="about-content">
-            <p>We are Guzraz, a company dedicated to providing top-quality services in Hosting, Domain Management, and RDP solutions. Our mission is to offer exceptional service with fast support and reliability to ensure our clients' online presence is always up and running smoothly.</p>
-            <p>With years of expertise and a dedicated support team, we ensure that your services are secure, fast, and optimized. Our passion lies in delivering top-notch customer service and exceeding expectations in every interaction.</p>
-        </div>
+        <p>At Guzraz Services, we are passionate about providing top-notch domain registration, hosting, and IT services tailored to meet the needs of businesses and individuals alike. With a strong focus on reliability and customer satisfaction, we strive to offer solutions that help you grow and succeed in the digital world.</p>
+        <p>Founded with the aim of delivering secure, scalable, and innovative services, Guzraz Services is your trusted partner for all your web presence needs. Our team is dedicated to providing personalized support and services that ensure a seamless experience for each of our clients.</p>
     </section>
 
-    <!-- Our Fast Support Section -->
-    <section class="fast-support">
-        <h3>Fast Support When You Need It</h3>
-        <p>We understand the importance of quick resolution and minimal downtime. Our support team is available 24/7 to assist you with any issues related to Hosting, Domain, or RDP. We guarantee fast response times to keep your services running smoothly.</p>
+    <!-- Fast Support Section -->
+    <section class="support-section" data-aos="fade-left">
+        <h3>Why Choose Our Fast Support?</h3>
+        <p>At Guzraz Services, we pride ourselves on offering fast and reliable support that ensures your issues are resolved quickly and efficiently. Here's why our support stands out:</p>
+        <ul>
+            <li><strong>24/7 Availability:</strong> Our team is available around the clock to assist you with any issues.</li>
+            <li><strong>Quick Response Time:</strong> We prioritize your concerns and aim to resolve them as quickly as possible.</li>
+            <li><strong>Expert Assistance:</strong> Our support team is knowledgeable and can provide expert solutions for all technical queries.</li>
+            <li><strong>Customer Satisfaction:</strong> We are committed to ensuring that every customer is fully satisfied with our support services.</li>
+        </ul>
     </section>
 
     <!-- Customer Reviews Section -->
-    <section class="reviews">
-        <h3>What Our Clients Say</h3>
-        <div class="reviews-cards">
-            <!-- Review 1 -->
-            <div class="review-card">
-                <p>"Guzraz Minecraft Hosting service is exceptional! I have never experienced such fast and reliable support." - John D.</p>
+    <section class="reviews-section" data-aos="fade-up">
+        <h2>What Our Clients Say</h2>
+        <div class="row">
+            <!-- Reviews Cards (3 Reviews for now) -->
+            <div class="col-md-4">
+                <div class="review-card">
+                    <h3>John Doe</h3>
+                    <p>"Guzraz Services has been an excellent partner for our business. Their fast support and reliable services have helped us grow our online presence."</p>
+                </div>
             </div>
-
-            <!-- Review 2 -->
-            <div class="review-card">
-                <p>"I moved all my domains here, and I couldn't be happier. Excellent customer support every time!" - Sarah K.</p>
+            <div class="col-md-4">
+                <div class="review-card">
+                    <h3>Jane Smith</h3>
+                    <p>"The team at Guzraz is extremely responsive and always willing to help. We wouldn't trust anyone else with our domain and hosting needs."</p>
+                </div>
             </div>
-
-            <!-- Review 3 -->
-            <div class="review-card">
-                <p>"The RDP service is smooth, and the support team is always there to help. Highly recommended!" - Alex P.</p>
-            </div>
-
-            <!-- Review 4 -->
-            <div class="review-card">
-                <p>"I’ve been with Guzraz Services for like 3 months. The hosting and support are top-notch!" - Emily F.</p>
-            </div>
-
-            <!-- Review 5 -->
-            <div class="review-card">
-                <p>"The best support I’ve ever had. They are always there for me whenever I need assistance!" - Michael T.</p>
-            </div>
-
-            <!-- Review 6 -->
-            <div class="review-card">
-                <p>"Fast and reliable services! I trust Guzraz with no doubt for all my domain and hosting needs." - Natalie H.</p>
-            </div>
-
-            <!-- Review 7 -->
-            <div class="review-card">
-                <p>"Quick responses and great service overall. I am very pleased with their support." - David L.</p>
-            </div>
-
-            <!-- Review 8 -->
-            <div class="review-card">
-                <p>"A great company with amazing uptime and fast support. I can always count on them. Let me take a moment to thank Anis for the support" - Sophie W.</p>
-            </div>
-
-            <!-- Review 9 -->
-            <div class="review-card">
-                <p>"I’ve been using Your Brand for my son's minecraft server hosting and domain management for years. No complaints!" - Thomas J.</p>
-            </div>
-
-            <!-- Review 10 -->
-            <div class="review-card">
-                <p>"Simply the best. Quick to resolve issues, and I’ve never had a problem with downtime!" - Rachel M.</p>
+            <div class="col-md-4">
+                <div class="review-card">
+                    <h3>Mark Wilson</h3>
+                    <p>"Great services, always prompt, and very professional. I highly recommend Guzraz Services for any web-related needs."</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 GuzrazServices. All rights reserved.</p>
+        <p>&copy; 2024 Guzraz Services. All rights reserved.</p>
         <div class="social-icons">
-            <a href="https://discord.gg/guzrazservices" target="_blank"><i class="material-icons">discord</i></a>
-            <a href="https://www.instagram.com/guzrazservices" target="_blank"><i class="material-icons">instagram</i></a>
-            <a href="https://www.facebook.com" target="_blank"><i class="material-icons">facebook</i></a>
-            <a href="https://www.twitter.com" target="_blank"><i class="material-icons">twitter</i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
+
+    <!-- Bootstrap JS & Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200, // Animation duration
+        });
+    </script>
 </body>
 </html>
