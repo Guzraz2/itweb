@@ -4,265 +4,249 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guzraz Services</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@500&display=swap" rel="stylesheet">
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #f5f5f5;
-            color: #333;
+            margin-top: 0;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
-        /* Navbar styles */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #333;
-            color: white;
+        /* Navbar Styling */
+        .navbar {
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #004d92, #62b2f1); /* Gradient background */
+            padding: 18px 20px;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
         }
 
-        nav .logo p {
-            font-size: 24px;
-            font-weight: bold;
+        .navbar-brand {
+            font-size: 28px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            padding: 10px 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        nav ul li {
-            margin: 0 20px;
+        .navbar-nav .nav-link:hover {
+            color: #4CAF50; /* Light green on hover */
+            transform: scale(1.1);
+            text-decoration: underline;
         }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s ease;
+        .navbar-toggler {
+            border-color: #fff;
         }
 
-        nav ul li a:hover {
-            color: #4CAF50;
+        .navbar-toggler-icon {
+            background-color: #fff;
         }
 
         /* Hero Section */
         header.hero {
-            background: linear-gradient(135deg, rgba(0, 128, 255, 0.8), rgba(34, 193, 195, 0.8)), url('https://source.unsplash.com/1600x900/?technology');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, rgba(0, 128, 255, 0.8), rgba(34, 193, 195, 0.8)), 
+                        url('https://source.unsplash.com/1600x900/?technology') no-repeat center center/cover;
             color: white;
             text-align: center;
-            padding: 100px 20px;
-            margin-top: 60px; /* To prevent navbar overlap */
+            padding: 150px 20px;
             position: relative;
             overflow: hidden;
-            border-bottom: 5px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
+            margin-top: 70px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
         }
 
         header.hero h1 {
-            font-size: 60px;
-            margin: 0;
+            font-size: 70px;
             font-weight: 700;
-            color: #fff;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             letter-spacing: 4px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
         }
 
         header.hero p {
-            font-size: 28px;
+            font-size: 32px;
             margin: 20px 0;
-            font-weight: 400;
-            color: #fff;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
         header.hero .btn {
-            background: linear-gradient(45deg, #4CAF50, #8bc34a);
-            color: white;
-            padding: 18px 50px;
+            text-transform: uppercase;
+            padding: 15px 30px;
             font-size: 20px;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
+            background: #4CAF50;
+            border-radius: 30px;
+            color: white;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         header.hero .btn:hover {
-            background: linear-gradient(45deg, #388e3c, #66bb6a);
-            transform: scale(1.05);
+            background: #388E3C;
+            transform: scale(1.1);
         }
 
-        header.hero .btn:focus {
-            outline: none;
-        }
-
-        /* Products Section */
-        section#products {
-            text-align: center;
-            margin: 50px 0;
-            padding: 50px 20px;
+        /* Our Services Section */
+        section#services {
+            padding: 80px 20px;
             background-color: #fff;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.5s 0.5s forwards;
         }
 
-        section#products h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
+        section#services h2 {
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: #444;
             font-weight: bold;
         }
 
-        .product-cards {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .product-card {
-            width: 280px;
-            text-align: center;
-            padding: 25px;
-            border: 1px solid #ddd;
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            background-color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #f8f8f8;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        .service-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
-        .product-card i {
-            font-size: 50px;
-            color: #4CAF50;
-            margin-bottom: 15px;
+        .service-card .card-body {
+            padding: 20px;
         }
 
-        .product-card h3 {
-            font-size: 22px;
+        .service-card h3 {
+            font-size: 26px;
             margin-bottom: 10px;
             font-weight: bold;
         }
 
-        .product-card p {
-            font-size: 16px;
+        .service-card p {
+            font-size: 18px;
             margin-bottom: 20px;
+            color: #666;
         }
 
-        .product-card a {
+        .service-card .btn {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .service-card .btn:hover {
+            background: linear-gradient(45deg, #388E3C, #66BB6A);
+            transform: scale(1.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card i {
+            font-size: 45px;
             color: #4CAF50;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .product-card a:hover {
-            color: #388e3c;
+            margin-bottom: 20px;
         }
 
         /* Customer Reviews Section */
         section#reviews {
+            padding: 80px 20px;
             background-color: #f9f9f9;
-            padding: 50px 20px;
             text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s 0.8s forwards;
         }
 
         section#reviews h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
+            font-size: 48px;
+            margin-bottom: 40px;
+            color: #444;
             font-weight: bold;
         }
 
-        .review-cards {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
         .review-card {
-            width: 320px;
-            padding: 25px;
             background-color: #fff;
-            border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: all 0.3s ease;
+            padding: 25px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
         .review-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .review-card p {
-            font-size: 16px;
+            font-size: 18px;
             margin-bottom: 20px;
         }
 
         .review-card h3 {
-            font-size: 20px;
+            font-size: 22px;
             margin-bottom: 5px;
             font-weight: bold;
         }
 
-        .review-card p:last-child {
-            font-size: 14px;
-            color: #777;
-        }
-
-        /* Footer */
         footer {
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 20px;
-            position: relative;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        footer .social-icons {
-            margin-top: 10px;
+            padding: 30px;
         }
 
         footer .social-icons a {
             color: white;
-            margin: 0 15px;
-            font-size: 24px;
+            margin: 0 20px;
+            font-size: 30px;
             transition: color 0.3s ease;
         }
 
@@ -270,84 +254,103 @@
             color: #4CAF50;
         }
 
-        /* Mobile Responsiveness */
+        /* Lazy Loading for Images */
+        img[data-src] {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        img[data-src].loaded {
+            opacity: 1;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                margin-top: 60px;
-            }
-
-            .product-cards {
-                flex-direction: column;
-            }
-
-            .review-cards {
-                flex-direction: column;
-            }
-
             header.hero h1 {
-                font-size: 48px;
+                font-size: 50px;
             }
 
             header.hero p {
-                font-size: 22px;
+                font-size: 24px;
             }
 
-            .product-card, .review-card {
-                width: 90%;
-                margin-bottom: 20px;
+            .service-card {
+                margin-bottom: 30px;
+            }
+
+            .review-card {
+                margin-bottom: 30px;
             }
         }
-
     </style>
 </head>
 <body>
-
     <!-- Navbar -->
-    <nav>
-        <div class="logo">
-            <p>Guzraz Services</p>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Guzraz Services</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
         </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-<!-- Idk --!>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero">
-        <div class="hero-content">
-            <h1>Welcome to Guzraz Services</h1>
-            <p>We offer Hosting, Domain, and RDP solutions to meet all your needs.</p>
-            <a href="#products" class="btn">Explore Products</a>
-        </div>
+        <h1>Welcome to Guzraz Services</h1>
+        <p>We provide the best in RDP Hosting and Domains</p>
+        <a href="#services" class="btn">Explore Our Services</a>
     </header>
 
-    <!-- Products Section -->
-    <section id="products">
-        <h2>Our Products</h2>
-        <div class="product-cards">
-            <div class="product-card">
-                <i class="fas fa-server"></i>
-                <h3>Hosting</h3>
-                <p>Reliable web hosting for all your needs</p>
-                <a href="hosting.html" target="_blank">Learn More</a>
+    <!-- Our Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="row">
+            <!-- RDP Service -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <i class="fas fa-desktop"></i>
+                    <div class="card-body">
+                        <h3>RDP</h3>
+                        <p>High-performance Remote Desktop Protocol services for secure access.</p>
+                        <a href="products.html" class="btn">Contact Us</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <i class="fas fa-cogs"></i>
-                <h3>Domain</h3>
-                <p>Get your desired domain with ease</p>
-                <a href="domain.html" target="_blank">Learn More</a>
+            <!-- Hosting Service -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <i class="fas fa-cloud"></i>
+                    <div class="card-body">
+                        <h3>Hosting</h3>
+                        <p>Reliable hosting services with fast and secure uptime.</p>
+                        <a href="products.html" class="btn">Contact Us</a>
+                    </div>
+                </div>
             </div>
-            <div class="product-card">
-                <i class="fas fa-laptop"></i>
-                <h3>RDP</h3>
-                <p>Access remote desktop solutions</p>
-                <a href="rdp.html" target="_blank">Learn More</a>
+            <!-- Domains Service -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <i class="fas fa-cogs"></i>
+                    <div class="card-body">
+                        <h3>Domains</h3>
+                        <p>Purchase and manage your domains with ease.</p>
+                        <a href="products.html" class="btn">Contact Us</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -355,34 +358,46 @@
     <!-- Customer Reviews Section -->
     <section id="reviews">
         <h2>What Our Customers Say</h2>
-        <div class="review-cards">
-            <div class="review-card">
-                <p>"Great service and support! Highly recommended!"</p>
-                <h3>John Doe</h3>
-                <p>Customer</p>
+        <div class="row">
+            <!-- Review 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="review-card">
+                    <p>"Guzraz Services has transformed the way we manage our hosting. Their customer service is second to none!"</p>
+                    <h3>Ali Raza</h3>
+                    <p>CEO, Tech Solutions</p>
+                </div>
             </div>
-            <div class="review-card">
-                <p>"Our website runs smoothly thanks to their hosting solutions."</p>
-                <h3>Jane Smith</h3>
-                <p>Business Owner</p>
+            <!-- Review 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="review-card">
+                    <p>"I highly recommend Guzraz Services for their fast RDP hosting. The setup was quick, and it's been reliable."</p>
+                    <h3>Sarah Khan</h3>
+                    <p>Founder, Web Innovators</p>
+                </div>
             </div>
-            <div class="review-card">
-                <p>"I have been using their services for years, and I am always satisfied!"</p>
-                <h3>Emily Williams</h3>
-                <p>Freelancer</p>
+            <!-- Review 3 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="review-card">
+                    <p>"The domain management system provided by Guzraz Services is extremely user-friendly and efficient!"</p>
+                    <h3>Imran Shah</h3>
+                    <p>Developer, CodeWorks</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 GuzrazServices. All rights reserved.</p>
+        <p>&copy; 2024 Guzraz Services</p>
         <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="x.com/GuzrazServices#"><i class="fab fa-twitter"></i></a>
-            <a href="instagram.com/GuzrazServices"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
     </footer>
 
+    <!-- Bootstrap JS and Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
